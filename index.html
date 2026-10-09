@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chainring &amp; Gear Calculator</title>
+<meta name="description" content="Open-source bike gear calculator. Every gear as a ratio, gear inches, development, gain ratio or speed, with range and gear gaps.">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+<main class="wrap">
+
+	<header class="intro">
+		<h1>Chainring &amp; Gear Calculator</h1>
+		<p>Every gear you have, in whichever unit you think in — plus your range,
+		your gear gaps, and what a different chainring would actually change.</p>
+	</header>
+
+	<form class="panel" id="form" autocomplete="off">
+		<section class="group">
+			<h2>Drivetrain</h2>
+			<div class="row">
+				<label class="field"><span>Chainring(s) <small>teeth, comma separated</small></span>
+					<input type="text" id="rings" value="34" inputmode="numeric"></label>
+				<label class="field"><span>Cassette <small>teeth, comma separated</small></span>
+					<input type="text" id="cogs" value="10,12,14,16,18,21,24,28,32,36,42,52"></label>
+			</div>
+			<div class="row" style="margin-top:1rem">
+				<label class="field"><span>Wheel circumference <small>mm</small></span>
+					<input type="number" id="circ" value="2277" min="500" max="3000" step="1"></label>
+				<label class="field"><span>Crank length <small>mm</small></span>
+					<input type="number" id="crank" value="170" min="100" max="220" step="2.5"></label>
+				<label class="field"><span>Cadence <small>rpm</small></span>
+					<input type="number" id="cadence" value="80" min="30" max="140" step="1"></label>
+				<label class="field"><span>Compare chainring <small>teeth, optional</small></span>
+					<input type="number" id="alt" min="0" max="70" step="1" placeholder="none"></label>
+			</div>
+			<p class="note">Circumference is the rolling figure from a bike computer —
+			2277 mm is a typical 29 × 2.4. Crank length only affects gain ratio.</p>
+		</section>
+	</form>
+
+	<section class="results" aria-live="polite">
+		<ul class="problems" id="problems" hidden></ul>
+
+		<dl class="stats">
+			<div><dt>Total range</dt><dd id="stat-range">—</dd></div>
+			<div><dt>Easiest gear</dt><dd id="stat-low">—</dd></div>
+			<div><dt>Hardest gear</dt><dd id="stat-high">—</dd></div>
+			<div><dt>Biggest jump</dt><dd id="stat-step">—</dd></div>
+		</dl>
+
+		<p class="same" id="compare" hidden></p>
+
+		<div class="table-wrap">
+			<table class="gears">
+				<thead>
+					<tr>
+						<th>Gear</th><th>Ratio</th><th>Gear in</th>
+						<th>Dev m</th><th>Gain</th><th>km/h</th><th>Step</th>
+						<th id="th-alt" hidden>With alt ring</th>
+					</tr>
+				</thead>
+				<tbody id="rows"></tbody>
+			</table>
+		</div>
+
+		<ul class="warnings" id="warnings" hidden></ul>
+	</section>
+
+	<footer class="foot">
+		<p><strong>This is a simplified build.</strong> It covers the gear table,
+		range, steps and a chainring comparison. For miles, a shareable setup and
+		bike presets, use the full version:</p>
+		<p class="cta"><a href="https://bikeshala.com/tools/chainring-calculator/">Chainring &amp; Cassette Calculator on Bikeshala →</a></p>
+		<p class="src">Source: <a href="https://github.com/VishalSharmavj/chainring-calculator">github.com/VishalSharmavj/chainring-calculator</a> · MIT</p>
+	</footer>
+
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
